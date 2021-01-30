@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>reveal.js</title>
+
+	<link rel="stylesheet"
+		href="dist/reset.css">
+	<link rel="stylesheet"
+		href="dist/reveal.css">
+	<link rel="stylesheet"
+		href="dist/theme/league.css"
+		id="theme">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet"
+		href="plugin/highlight/monokai.css"
+		id="highlight-theme">
+
+	<style>
+		pre {
+			tab-size: 2;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h2>Google Apps Script</h2>
+				<b class="highlight-blue">Many Google apps, one platform in the cloud</b>
+				<blockquote>Чтобы понять рекурсию, нужно сперва понять рекурсию.</blockquote>
+			</section>
+			<section data-background-transition="zoom">
+				<section data-auto-animate>
+					<h2>Apps Script and Spreadsheet</h2>
+					<pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers><script type="text/template">
+						function foo() {
+							const table = SpreadsheetApp.getActive();
+							table.getRange('B3').setBackground('#ff0');
+							table.getRange('B4').setBackground('#ff0');
+							table.getRange('B5').setBackground('#ff0');
+						};
+					</script></code></pre>
+				</section>
+				<section data-auto-animate>
+					<h2 data-id="code-title">Calendar</h2>
+					<pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers><script type="text/template">
+						function foo() {
+							const event = CalendarApp.getDefaultCalendar().createEvent(
+								'Apollo 11 Landing',
+								new Date('January 25, 2021 20:00:00 UTC'),
+								new Date('January 25, 2021 21:00:00 UTC')
+							);
+							Logger.log('Event ID: ' + event.getId());
+						};
+					</script></code></pre>
+				</section>
+				<section data-auto-animate>
+					<h2 data-id="code-title">Gmail</h2>
+					<pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers><script type="text/template">
+						function foo() {
+							const now = new Date();
+							const email = Session.getActiveUser().getEmail();
+							GmailApp.sendEmail(
+								email,
+								"current time",
+								"The time is: " + now.toString()
+							);
+							Logger.log('Email: ' + email);
+						};
+					</script></code></pre>
+				</section>
+				<section data-auto-animate>
+					<h2 data-id="code-title">Docs</h2>
+					<pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers><script type="text/template">
+						function foo() {
+							const doc = DocumentApp.create('Hello Dolly');
+							const body = doc.getBody();
+							body.appendParagraph('This is Louis, Dolly');
+							body.appendParagraph('It\'s so nice to have you back where you belong');
+						};
+					</script></code></pre>
+				</section>
+				<section data-auto-animate>
+					<h2 data-id="code-title">Translate</h2>
+					<pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers><script type="text/template">
+						function foo() {
+							const english = 'This is a test';
+							const spanish = LanguageApp.translate(english, 'en', 'es');
+							Logger.log(spanish);
+							// Esto es una prueba
+						};
+					</script></code></pre>
+				</section>
+			</section>
+			<section>
+				<h2>Google Spreadsheet Demo</h2>
+				<a
+					href="https://docs.google.com/spreadsheets/d/1qHFnPjswK7MdETE4XxgPcIlfivGBhs-4vMXB8Jk9Ahk/edit#gid=0">Let's
+					go</a>
+			</section>
+			<section data-auto-animate>
+				<h2 data-id="code-title">WTF?</h2>
+				<p>Use the magic snippet instead!</p>
+				<pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers><script type="text/template">
+					=importrange(
+						"1e1eKoy5ndA68DATbBRRxEKKKhJeNr1QUW0DoNLcxu0w";
+						"PartnerA!A:C"
+					)
+				</script></code></pre>
+			</section>
+			<section>
+				<section>
+					<h3>Spreadsheet to JSON?</h3>
+				</section>
+				<section data-background="https://i.giphy.com/media/WUay9BLLngVU3zs95c/source.gif"
+					data-background-transition="zoom">
+				</section>
+				<section>
+					<h3>What about CRUD?</h3>
+				</section>
+				<section data-background="https://media.giphy.com/media/l0MYNg2bPOE6gwWMU/source.gif"
+					data-background-transition="zoom">
+					<h2>Pff!</h2>
+				</section>
+			</section>
+			<section>
+				<h3>References</h3>
+				<ul>
+					<li>https://developers.google.com/apps-script;</li>
+					<li><a href="https://docs.google.com/spreadsheets/d/1qHFnPjswK7MdETE4XxgPcIlfivGBhs-4vMXB8Jk9Ahk/edit#gid=0"
+							target="_blank">Google Spreadsheet Example</a>;</li>
+				</ul>
+			</section>
+			<section data-background="https://i.giphy.com/3ohfFNaJdwB1vcHJ04.gif">
+				<h3>The End</h3>
+				<blockquote>Первые 90% кода занимают первые 90% времени на разработку… Оставшиеся 10% кода занимают еще
+					90%
+					времени на разработку.</blockquote>
+			</section>
+		</div>
+	</div>
+
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+</body>
+
+</html>
